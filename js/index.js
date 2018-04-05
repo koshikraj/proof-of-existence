@@ -78,7 +78,7 @@ $(document).ready(function() {
 
   // latest documents
   var refreshLatest = function(type, count, table) {
-    $.getJSON('./api/v1/latest/' + type + "/" + count, function(data) {
+    $.getJSON('http://localhost:8000/details?count=' + count, function(data) {
       var items = [];
 
       items.push(
@@ -132,7 +132,7 @@ $(document).ready(function() {
   var signature = $('#signature').val();
   //console.log(name,email,message,signature);
 
-  $.post('./api/v1/publish/' + signature,{name: name, email: email, message: message }, function(data){
+  $.post('http://localhost:8000/publish', {name: name, email: email, message: message, signature: signature}, function(data){
     console.log(data);
     $('#wait').remove();
     $('#description_container').append("<h2>Success</h2>");

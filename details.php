@@ -20,7 +20,7 @@ include_once 'include/nav.php';
         <!-- /.row -->
 <script>
             signature = '<?php echo $_GET['signature']; ?>';
-  $.get( "api/v1/verify/"+ signature , function( data ) {
+  $.get( "http://localhost:8000/verify?signature=" + signature  , function( data ) {
 
  Object.keys(data).forEach(function(k) {
       var items = [];
