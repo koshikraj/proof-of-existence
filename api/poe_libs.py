@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from multichain_driver import MultichainClient
 
 
@@ -22,12 +24,12 @@ class Document(object):
 
         latest_docs = []
         for doc in self.client.liststreamitems(self.stream)[::-1][:count]:
+            blocktime = datetime.fromtimestamp(int(doc.get('blocktime'))).strftime("%Y-%m-%d %X UTC") if doc.get('blocktime') else None
             latest_docs.append({"signature": doc.get('key'),
-             "blocktime": doc.get('blocktime'),
+             "blocktime": blocktime,
              "confirmations": doc.get('confirmations')})
 
         return latest_docs
-
 
     def fetch_by_key(self, key):
         """fetches the existence info of a document in blockchain"""

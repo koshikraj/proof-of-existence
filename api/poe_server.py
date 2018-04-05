@@ -5,6 +5,7 @@ from base64 import b64encode, b64decode
 from datetime import datetime
 from sanic import Sanic
 from sanic.response import json
+from sanic_cors import CORS, cross_origin
 
 from poe_libs import Document
 
@@ -16,6 +17,7 @@ class Server(object):
     def __init__(self):
 
         self.app = Sanic()
+        CORS(self.app)
         self.document = Document()
 
         self.app.add_route(self.verify, '/verify', methods=['GET'])
@@ -39,7 +41,8 @@ class Server(object):
                      "email": meta_data.get('email'),
                      "message": meta_data.get('message'),
                      "recorded_timestamp_UTC": doc.get('blocktime'),
-                     "readable_time_UTC": None}
+                     "readable_time_UTC": datetime.fromtimestamp(int(doc.get('blocktime'))).
+                         strftime("%c")}
             response_data.append(doc)
 
         return json(response_data)
@@ -48,17 +51,15 @@ class Server(object):
         """publishes document detail and returns its block info"""
 
         try:
-            json_data = {'name': request.json.get('name'),
-                         'email': request.json.get('email'),
-                         'message': request.json.get('message'),
-                         'signature': request.json.get('signature')}
+            json_data = {'name': request.form.get('name'),
+                         'email': request.form.get('email'),
+                         'message': request.form.get('message'),
+                         'signature': request.form.get('signature')}
             json_string = JSON.dumps(json_data)
             encoded = b64encode(json_string.encode('utf-8'))
             hex_encoded = binascii.b2a_hex(encoded).decode()
             tx_id = self.document.publish(json_data['signature'], hex_encoded)
             tx_info = self.document.fetch_by_txid(tx_id)
-
-
 
             response_data = {'long_url': None,
                              'short_url': None,
