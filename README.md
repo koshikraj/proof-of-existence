@@ -2,9 +2,9 @@
 Python implementation of Proof Of Existence project using multichain framework.
 original project : [proof-of-existence-on-blockchain](https://github.com/RecordsKeeper/proof-of-existence-on-blockchain)
 
-This is a tool to generate a Proof-of-Existence of a file or record on Private Blockchain. By submitting this form you will be uploading the file's signature with it's associated information into the Private Decentralized Public Ledger. Records stored here can later be fetched to prove that this file existed on particular date & time with the associated information.
+This is a tool to generate a Proof-of-Existence of a file or record on Private Blockchain. By submitting this form you will be uploading the file's digest with it's associated information into the Private Decentralized Public Ledger. Records stored here can later be fetched to prove that this file existed on particular date & time with the associated information.
 
-Computationally & Technologically it is impossible to fake the Document's signature and/or modify the past records. Hence this PoE can be used to prove the file's existence in legal matters.
+Computationally & Technologically it is impossible to fake the Document's digest and/or modify the past records. Hence this PoE can be used to prove the file's existence in legal matters.
 
 ## How it works?
 * Step 1: Fill the form & Upload the file

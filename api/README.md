@@ -17,12 +17,12 @@
 curl -H "Content-type:application/json" --data '{"name": "name",
                                                 "email": "email@test.com",
                                                 "message": "test message",
-                                                "signature": "SHA256signature"}' http://localhost:8000/publish
+                                                "digest": "SHA256digest"}' http://localhost:8000/publish
 ```
 
 ##### Verify document
 ```
-curl http://localhost:8000/verify?signature=SHA256signature
+curl http://localhost:8000/verify?digest=SHA256digest
 ``` 
 
 ##### Fetch latest document info

@@ -9,10 +9,10 @@ class Document(object):
         self.client = MultichainClient().connect()
         self.stream = 'poe'
 
-    def verify(self, signature):
+    def verify(self, digest):
         """verifies the existence of a document in blockchain"""
 
-        return self.fetch_by_key(signature)
+        return self.fetch_by_key(digest)
 
     def publish(self, key, value):
         """publishes the existence of a document in blockchain"""
@@ -25,7 +25,7 @@ class Document(object):
         latest_docs = []
         for doc in self.client.liststreamitems(self.stream)[::-1][:count]:
             blocktime = datetime.fromtimestamp(int(doc.get('blocktime'))).strftime("%Y-%m-%d %X UTC") if doc.get('blocktime') else None
-            latest_docs.append({"signature": doc.get('key'),
+            latest_docs.append({"digest": doc.get('key'),
              "blocktime": blocktime,
              "confirmations": doc.get('confirmations')})
 

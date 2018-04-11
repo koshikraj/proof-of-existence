@@ -27,13 +27,13 @@ class Server(object):
     async def verify(self, request):
         """returns details about verified document"""
 
-        signature = request.args.get('signature')
-        verified_docs = self.document.verify(signature)
+        digest = request.args.get('digest')
+        verified_docs = self.document.verify(digest)
         response_data = []
         for doc in verified_docs:
             meta_data = JSON.loads(b64decode(binascii.a2b_hex(doc.get('data'))).decode())
 
-            doc = {"signature": signature,
+            doc = {"digest": digest,
                      "transaction_id": doc.get('txid'),
                      "confirmations": doc.get('confirmations'),
                      "blocktime": doc.get('blocktime'),
@@ -54,16 +54,16 @@ class Server(object):
             json_data = {'name': request.form.get('name'),
                          'email': request.form.get('email'),
                          'message': request.form.get('message'),
-                         'signature': request.form.get('signature')}
+                         'digest': request.form.get('digest')}
             json_string = JSON.dumps(json_data)
             encoded = b64encode(json_string.encode('utf-8'))
             hex_encoded = binascii.b2a_hex(encoded).decode()
-            tx_id = self.document.publish(json_data['signature'], hex_encoded)
+            tx_id = self.document.publish(json_data['digest'], hex_encoded)
             tx_info = self.document.fetch_by_txid(tx_id)
 
             response_data = {'long_url': None,
                              'short_url': None,
-                             'signature': json_data['signature'],
+                             'digest': json_data['digest'],
                              'transaction_id': tx_id,
                              'confirmations': tx_info.get('confirmations'),
                              'blockhash': tx_info.get('blockhash'),

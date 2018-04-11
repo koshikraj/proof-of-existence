@@ -92,8 +92,8 @@ $(document).ready(function() {
         if (obj.confirmations > 0) {
           badge = '<span class="label label-success">✔</span>';
         }
-        items.push('<tr><td>' + badge + '</td><td><a href="./details.php?signature=' + obj.signature +
-          '" target="_blank">' + obj.signature +
+        items.push('<tr><td>' + badge + '</td><td><a href="./details.php?digest=' + obj.digest +
+          '" target="_blank">' + obj.digest +
           '</a></td><td> ' + obj.blocktime + '</td></tr>');
       });
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
   var crypto_finish = function(hash) {
     bar.width(100 + '%');
     explain.html(translate('Document hash: ') + hash);
-    $('#signature').val(hash);
+    $('#digest').val(hash);
     console.log("hash loaded: "+hash);
     //$.post('./api/v1/register/' + hash, onRegisterSuccess);
   };
@@ -129,10 +129,10 @@ $(document).ready(function() {
   var name = $('#name').val();
   var email = $('#email').val();
   var message = $('#message').val();
-  var signature = $('#signature').val();
-  //console.log(name,email,message,signature);
+  var digest = $('#digest').val();
 
-  $.post('http://localhost:8000/publish', {name: name, email: email, message: message, signature: signature}, function(data){
+
+  $.post('http://localhost:8000/publish', {name: name, email: email, message: message, digest: digest}, function(data){
     console.log(data);
     $('#wait').remove();
     $('#description_container').append("<h2>Success</h2>");

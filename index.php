@@ -51,7 +51,7 @@ include_once 'include/nav.php';
           </fieldset>
                     <!--<input type="file" id="poeFile">-->
                   </div>
-                <input type="hidden" id="signature" value="">
+                <input type="hidden" id="digest" value="">
                   <button type="submit" class="btn btn-primary">Generate PoE Now</button>
                 </form>
                 </div>

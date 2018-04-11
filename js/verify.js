@@ -85,7 +85,7 @@ $(document).ready(function() {
   var crypto_finish = function(hash) {
     bar.width(100 + '%');
     explain.html(translate('Document hash: ') + hash);
-    $('#signature').val(hash);
+    $('#digest').val(hash);
     //console.log("hash loaded: "+hash);
     //$.post('./api/v1/register/' + hash, onRegisterSuccess);
   };
@@ -93,11 +93,10 @@ $(document).ready(function() {
  $( "#upload_form" ).submit(function( event ) {
   //alert( "Handler for .submit() called." );
   event.preventDefault();
-  var signature = $('#signature').val();
-  //console.log(name,email,message,signature);
-  window.location.href = "details.php?signature="+signature;
+  var digest = $('#digest').val();
+  window.location.href = "details.php?digest="+digest;
 
-//   $.post('./api/v1/verify/' + signature, function(data){
+//   $.post('./api/v1/verify/' + digest, function(data){
 //     console.log(data);
 //     $('#wait').remove();
 //     $('#description_container').append("<h2>Success</h2>");

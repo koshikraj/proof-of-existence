@@ -10,7 +10,7 @@ include_once 'include/nav.php';
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Details of a Proof-of-Existence
-                    <small><?php echo $_GET['signature']; ?></small>
+                    <small><?php echo $_GET['digest']; ?></small>
                 </h1>
 
                 <h3 class="page-header">Arranged in chronological order (Most recent first).
@@ -19,8 +19,8 @@ include_once 'include/nav.php';
         </div>
         <!-- /.row -->
 <script>
-            signature = '<?php echo $_GET['signature']; ?>';
-  $.get( "http://localhost:8000/verify?signature=" + signature  , function( data ) {
+    digest = '<?php echo $_GET['digest']; ?>';
+  $.get( "http://localhost:8000/verify?digest=" + digest  , function( data ) {
 
  Object.keys(data).forEach(function(k) {
       var items = [];
