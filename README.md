@@ -1,4 +1,6 @@
 # proof-of-existence
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkoshikraj%2Fproof-of-existence.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkoshikraj%2Fproof-of-existence?ref=badge_shield)
+
 Python implementation of Proof Of Existence project using multichain framework.
 original project : [proof-of-existence-on-blockchain](https://github.com/RecordsKeeper/proof-of-existence-on-blockchain)
 
@@ -10,3 +12,7 @@ Computationally & Technologically it is impossible to fake the Document's digest
 * Step 1: Fill the form & Upload the file
 * Step 2: Copy the link & Share it with people you want to prove its existence
 * Step 3: Anyone with link or file can verify the existence of the file at particular date & time.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkoshikraj%2Fproof-of-existence.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkoshikraj%2Fproof-of-existence?ref=badge_large)
